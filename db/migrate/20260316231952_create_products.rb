@@ -5,7 +5,7 @@ class CreateProducts < ActiveRecord::Migration[7.2]
       t.string :brand
       t.text :description
       t.string :sku
-      t.integer :stock
+      t.integer :stock, default: 0
       t.decimal :price, precision: 10, scale: 2, null: false
       t.references :category, null: false, foreign_key: true
       t.string :image_url
