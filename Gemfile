@@ -26,6 +26,10 @@ gem "jbuilder"
 gem "bcrypt", "~> 3.1.7"
 
 
+# faker 
+gem "faker"
+
+
 # use active admin
 gem "activeadmin"
 gem "devise"

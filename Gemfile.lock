@@ -129,6 +129,8 @@ GEM
       cgi (>= 0.3.3)
     error_highlight (0.7.0)
     erubi (1.13.1)
+    faker (3.6.1)
+      i18n (>= 1.8.11, < 2)
     ffi (1.17.3)
     formtastic (6.0.0)
       actionpack (>= 7.2.0)
@@ -377,6 +379,7 @@ DEPENDENCIES
   debug
   devise
   error_highlight (>= 0.4.0)
+  faker
   importmap-rails
   jbuilder
   puma (>= 5.0)

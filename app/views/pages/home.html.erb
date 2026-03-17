@@ -1,2 +1,18 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<div class="product-grid">
+    <% @products.each do |product| %>
+      
+        <div class="product-card">
+          <% if product.image_url.present? %>
+            <%= image_tag product.image_url, alt: product.name %>
+          <% else %>
+            <div class="placeholder-image">No image</div>
+          <% end %>
+          <h3><%= product.name %></h3>
+          <p><%= number_to_currency(product.price) %></p>
+        </div>
+      
+    <% end %>
+  </div>
