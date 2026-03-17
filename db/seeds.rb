@@ -7,3 +7,4 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+AdminUser.create!(email: 'admin@fpvshop.com', password: 'fpvworldrules!', password_confirmation: 'fpvworldrules!') if Rails.env.development?
