@@ -13,4 +13,24 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+
+
+  # home root
+  root "pages#home"  
+
+  # products
+  get "browse", to: "products#index"
+
+  # login and signup page
+  get "login_signup", to: "pages#login_signup"
+
+
+  # cart
+  get "cart", to: "carts#show"
+
+  #checkout
+  get "order_fill", to: "orders#new"
+  
+
 end
