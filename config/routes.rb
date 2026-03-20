@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   # products
   get "browse", to: "products#index"
 
+  resources :products, only: [:index, :show]
+
   # login and signup page
   get "login_signup", to: "pages#login_signup"
 

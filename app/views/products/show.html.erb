@@ -1,2 +1,18 @@
 <h1>Products#show</h1>
 <p>Find me in app/views/products/show.html.erb</p>
+
+<h1><%= @product.name %></h1>
+<% if @product.image_url.present? %>
+  <%= image_tag @product.image_url, alt: @product.name %>
+<% else %>
+  <div>No image</div>
+<% end %>
+
+<p><strong>Brand:</strong> <%= @product.brand %></p>
+<p><strong>Description:</strong> <%= @product.description %></p>
+<p><strong>SKU:</strong> <%= @product.sku %></p>
+<p><strong>Stock:</strong> <%= @product.stock %></p>
+<p><strong>Price:</strong> <%= number_to_currency(@product.price) %></p>
+<p><strong>Category:</strong> <%= @product.category.name if @product.category %></p>
+
+<%= link_to 'Back to Browse', browse_path %>
