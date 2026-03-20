@@ -2,6 +2,21 @@
 <p>Find me in app/views/products/index.html.erb</p>
 
 
-## todo, making the formats of all the pages just for now. 
-## start with a basic blocking. and then we can move onto other features. 
-## final thing is style and then the web scraper.
+
+
+<main> 
+    <h2>Products</h2>
+    <div> 
+        <% if @products.any? %>
+            <p> products available </p>
+
+
+
+
+            
+        <% else %>
+            <p> No Products found. </p>
+
+        <% end %>
+    </div>
+</main>
