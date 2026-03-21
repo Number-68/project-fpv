@@ -15,4 +15,6 @@
 <p><strong>Price:</strong> <%= number_to_currency(@product.price) %></p>
 <p><strong>Category:</strong> <%= @product.category.name if @product.category %></p>
 
+<%= button_to "Add to Cart", add_to_cart_path(@product), method: :post %>
+
 <%= link_to 'Back to Browse', browse_path %>

@@ -31,6 +31,12 @@ Rails.application.routes.draw do
   # cart
   get "cart", to: "carts#show"
 
+  resource :cart, only: [:show] do
+    post 'add/:product_id', to: 'carts#add', as: 'add_to'
+    delete 'remove/:product_id', to: 'carts#remove', as: 'remove_from'
+    patch 'update/:product_id', to: 'carts#update', as: 'update_cart'
+  end
+
   #checkout
   get "order_fill", to: "orders#new"
   
