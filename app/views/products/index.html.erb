@@ -92,7 +92,11 @@
                     <h3><%= product.name %></h3>
                     <p><%= number_to_currency(product.price) %></p>
                     <% end %>
+                    <% if logged_in? %>
                     <%= button_to "Add to Cart", add_to_cart_path(product), method: :post %>
+                    <% else %>
+                    <p> please log in to add to cart. </p>
+                    <% end %>
                 </div>
                 <% end %>
             </div>

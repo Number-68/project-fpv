@@ -4,5 +4,6 @@ class PagesController < ApplicationController
   end
 
   def login_signup
+    @customer = Customer.new
   end
 end

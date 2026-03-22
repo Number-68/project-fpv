@@ -4,6 +4,7 @@ class CreateOrders < ActiveRecord::Migration[7.2]
       t.references :customer, null: false, foreign_key: true
       t.datetime :order_date
       t.decimal :total_price, precision: 10, scale: 2
+      t.string :address
       
 
       t.timestamps

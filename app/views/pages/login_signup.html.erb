@@ -1,2 +1,53 @@
-<h1>Pages#login_signup</h1>
-<p>Find me in app/views/pages/login_signup.html.erb</p>
+<div style="display: flex; gap: 2rem; max-width: 1000px; margin: 0 auto;">
+  <!-- Login Section -->
+  <div style="flex: 1; border: 1px solid #ccc; padding: 1rem; border-radius: 8px;">
+    <h2>Log In</h2>
+    <%= form_with url: login_path, method: :post, local: true do |f| %>
+      <div>
+        <%= label_tag :email, "Email" %>
+        <%= email_field_tag :email, nil, required: true, style: "width: 100%;" %>
+      </div>
+      <div>
+        <%= label_tag :password, "Password" %>
+        <%= password_field_tag :password, nil, required: true, style: "width: 100%;" %>
+      </div>
+      <%= submit_tag "Log In", style: "margin-top: 1rem;" %>
+    <% end %>
+  </div>
+
+  <!-- Signup Section -->
+  <div style="flex: 1; border: 1px solid #ccc; padding: 1rem; border-radius: 8px;">
+    <h2>Sign Up</h2>
+    <%= form_with model: @customer, url: signup_path, method: :post, local: true do |f| %>
+      <div>
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, required: true, style: "width: 100%;" %>
+      </div>
+      <div>
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, required: true, style: "width: 100%;" %>
+      </div>
+      <div>
+        <%= f.label :phone_number %>
+        <%= f.telephone_field :phone_number, style: "width: 100%;" %>
+      </div>
+      <div>
+        <%= f.label :address %>
+        <%= f.text_field :address, style: "width: 100%;" %>
+      </div>
+      <div>
+        <%= f.label :email %>
+        <%= f.email_field :email, required: true, style: "width: 100%;" %>
+      </div>
+      <div>
+        <%= f.label :password %>
+        <%= f.password_field :password, required: true, style: "width: 100%;" %>
+      </div>
+      <div>
+        <%= f.label :password_confirmation, "Confirm Password" %>
+        <%= f.password_field :password_confirmation, required: true, style: "width: 100%;" %>
+      </div>
+      <%= f.submit "Sign Up", style: "margin-top: 1rem;" %>
+    <% end %>
+  </div>
+</div>

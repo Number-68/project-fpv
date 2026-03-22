@@ -39,6 +39,14 @@ Rails.application.routes.draw do
 
   #checkout
   get "order_fill", to: "orders#new"
+  resources :orders, only: [:new, :create, :show]
   
+
+
+  # session
+  post 'login', to: 'sessions#create', as: :login
+  delete 'logout', to: 'sessions#destroy', as: :logout
+  # registration
+  post 'signup', to: 'registrations#create', as: :signup
 
 end
