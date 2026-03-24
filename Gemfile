@@ -30,6 +30,11 @@ gem "bcrypt", "~> 3.1.7"
 gem "faker"
 
 
+# stripe
+gem "stripe"
+
+
+
 # use active admin
 gem "activeadmin"
 gem "devise"
@@ -54,6 +59,9 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  # dotenv
+  gem "dotenv-rails"
 end
 
 group :development do

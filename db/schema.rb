@@ -70,6 +70,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_03_16_232842) do
     t.integer "customer_id", null: false
     t.datetime "order_date"
     t.decimal "total_price", precision: 10, scale: 2
+    t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_orders_on_customer_id"
