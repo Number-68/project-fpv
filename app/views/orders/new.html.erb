@@ -29,8 +29,7 @@
 <p><strong>Total:</strong> <%= number_to_currency(@total) %></p>
 
 <h2>Shipping Information</h2>
-<%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
-  <div>
+<%= form_with model: @order, url: orders_path, method: :post, local: true, data: { turbo: false } do |f| %>  <div>
     <%= f.label :shipping_address_line1, "Address Line 1" %>
     <%= f.text_field :shipping_address_line1, required: true %>
   </div>

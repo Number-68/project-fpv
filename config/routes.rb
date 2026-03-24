@@ -35,7 +35,15 @@ Rails.application.routes.draw do
     post 'add/:product_id', to: 'carts#add', as: 'add_to'
     delete 'remove/:product_id', to: 'carts#remove', as: 'remove_from'
     patch 'update/:product_id', to: 'carts#update', as: 'update_cart'
+
+    get 'success', on: :collection
+    get 'cancel', on: :collection
   end
+
+
+  get 'orders/success', to: 'orders#success', as: 'order_success'
+  get 'orders/cancel', to: 'orders#cancel', as: 'order_cancel'
+
 
   #checkout
   get "order_fill", to: "orders#new"
