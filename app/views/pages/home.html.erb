@@ -1,18 +1,28 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<main>
 
-<div class="product-grid">
-  <% @products.each do |product| %>
-    <%= link_to product_path(product) do %>
-      <div class="product-card">
-        <% if product.image_url.present? %>
-          <%= image_tag product.image_url, alt: product.name %>
-        <% else %>
-          <div class="placeholder-image">No image</div>
-        <% end %>
-        <h3><%= product.name %></h3>
-        <p><%= number_to_currency(product.price) %></p>
-      </div>
+
+  <div class="welcome-grid">
+    <h1><strong>Welcome to Fpv Winnipeg!</strong></h1>
+    <h2>Glad you made it!</h2>
+    <p>Featured Products</p>
+  </div>
+    
+ 
+
+  <div class="product-grid">
+    <% @products.each do |product| %>
+      <%= link_to product_path(product) do %>
+        <div class="product-card">
+          <% if product.image_url.present? %>
+            <%= image_tag product.image_url, alt: product.name %>
+          <% else %>
+            <div class="placeholder-image">No image</div>
+          <% end %>
+          <h3><%= product.name %></h3>
+          <p><%= number_to_currency(product.price) %></p>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
+
+</main>

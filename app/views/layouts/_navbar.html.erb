@@ -1,14 +1,29 @@
-<nav>
-    <%= link_to 'Home', root_path %>
-    <%= link_to 'Browse', browse_path %>
-    
+<div class="header-container">
+    <div class="title">
+        <%= link_to root_path, class: "white-links" do %>
+            <h1><strong>Fpv Winnipeg</strong></h1>
+        <% end %>
+    </div>
 
-    <% if logged_in? %>
-        <%= link_to 'Cart', cart_path %>
-        <%= button_to "Logout", logout_path, method: :delete, form: { style: 'display: inline;' } %>
+    <nav class="main">
+
+
+
+
+        <%= link_to 'Browse', browse_path, class: "big-letters" %>
+            
+
+            
         
-    <% else %>
-        <%= link_to "Login / Signup", login_signup_path %>
-    <% end %>
-</nav>
+    </nav>
 
+    <nav class="login">
+        <% if logged_in? %>
+            <%= link_to 'Cart', cart_path, class: "white-links"%>
+            <%= button_to "Logout", logout_path, method: :delete %>
+                    
+        <% else %>
+            <%= link_to "Login / Signup", login_signup_path,  class: "white-links" %>
+        <% end %>
+    </nav>
+</div>
