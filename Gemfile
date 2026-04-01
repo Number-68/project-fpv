@@ -38,6 +38,7 @@ gem "stripe"
 gem "kaminari"
 
 
+
 # use active admin
 gem "activeadmin"
 gem "devise"

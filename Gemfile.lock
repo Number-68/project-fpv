@@ -394,6 +394,7 @@ DEPENDENCIES
   httparty
   importmap-rails
   jbuilder
+  kaminari
   nokogiri
   puma (>= 5.0)
   rails (~> 7.2.3)
