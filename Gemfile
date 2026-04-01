@@ -34,6 +34,9 @@ gem "faker"
 gem "stripe"
 
 
+# pagination kaminari
+gem "kaminari"
+
 
 # use active admin
 gem "activeadmin"

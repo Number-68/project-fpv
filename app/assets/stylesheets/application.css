@@ -101,6 +101,41 @@ a.white-links, a.white-links h1{
 
 
 
+
+
+.logout-btn{
+    appearance: none;
+    border-radius: 0px;
+
+    color: white;
+    background: rgb(151, 161, 161);
+    transition: 0.2s;
+
+    text-shadow: none;
+}
+
+
+button.logout-btn:hover{
+    
+
+    border-radius: 20px;
+
+    color: rgb(151, 161, 161);
+    background: white !important;
+
+
+    
+}
+
+
+.logout-btn:active{
+    appearance: none;
+}
+
+
+
+
+
 main{
     display: flex;
 
@@ -165,7 +200,6 @@ div.welcome-grid{
   max-height: 200px;
   object-fit: cover;
 }
-
 
 
 

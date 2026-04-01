@@ -20,7 +20,7 @@
     <nav class="login">
         <% if logged_in? %>
             <%= link_to 'Cart', cart_path, class: "white-links"%>
-            <%= button_to "Logout", logout_path, method: :delete %>
+            <%= button_to "Logout", logout_path, method: :delete, class: "logout-btn"%>
                     
         <% else %>
             <%= link_to "Login / Signup", login_signup_path,  class: "white-links" %>

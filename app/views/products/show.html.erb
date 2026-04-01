@@ -1,5 +1,3 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
 
 <h1><%= @product.name %></h1>
 <% if @product.image_url.present? %>
@@ -16,7 +14,7 @@
 <p><strong>Category:</strong> <%= @product.category.name if @product.category %></p>
 
 <% if logged_in? %>
-  <%= button_to "Add to Cart", add_to_cart_path(@product), method: :post %>
+  <%= button_to "Add to Cart", add_to_cart_path(@product), method: :post, class: "logout-btn" %>
 <% else %>
   <p> please log in to add to cart. </p>
 <% end %>
