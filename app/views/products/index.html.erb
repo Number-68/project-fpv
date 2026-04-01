@@ -1,73 +1,79 @@
 
 
-<div>
+<div class="browse-container">
 
     <aside> 
         <h2>Filters</h2>
         <%= form_with url: browse_path, method: :get, local: true do |form| %>
 
 
-            
-            <div>
-                <h3>Category</h3>
-                <% @categories.each do |category| %>
-                    <div>
-                    <%= check_box_tag "category_ids[]", category.id, params[:category_ids]&.include?(category.id.to_s), id: "cat_#{category.id}" %>
-                    <%= label_tag "cat_#{category.id}", category.name %>
+            <div class="filter-container">
+                <div class="filters">
+                    <h3>Category</h3>
+                    <div class="filter-scroll">
+                        <% @categories.each do |category| %>
+                            <div>
+                            <%= check_box_tag "category_ids[]", category.id, params[:category_ids]&.include?(category.id.to_s), id: "cat_#{category.id}" %>
+                            <%= label_tag "cat_#{category.id}", category.name %>
+                            </div>
+                        <% end %>
                     </div>
-                <% end %>
-            </div>
+                </div>
 
 
-            
-            <div>
-                <h3>Brand</h3>
-                <% @brands.each do |brand| %>
-                    <div>
-                    <%= check_box_tag "brands[]", brand, params[:brands]&.include?(brand), id: "brand_#{brand.parameterize}" %>
-                    <%= label_tag "brand_#{brand.parameterize}", brand %>
+                
+                <div class="filters">
+                    <h3>Brand</h3>
+                    <div class="filter-scroll">
+                        <% @brands.each do |brand| %>
+                            <div>
+                            <%= check_box_tag "brands[]", brand, params[:brands]&.include?(brand), id: "brand_#{brand.parameterize}" %>
+                            <%= label_tag "brand_#{brand.parameterize}", brand %>
+                            </div>
+                        <% end %>
                     </div>
-                <% end %>
+                </div>
+
+
+                <div class="filters">
+                    <h3>Price</h3>
+                    <div class="filter-scroll">
+                        <div>
+                            <%= radio_button_tag "price_range", "under_30", params[:price_range] == "under_30", id: "price_under30" %>
+                            <%= label_tag "price_under30", "Under $30" %>
+                        </div>
+                        <div>
+                            <%= radio_button_tag "price_range", "30_to_60", params[:price_range] == "30_to_60", id: "price_30_60" %>
+                            <%= label_tag "price_30_60", "$30 – $60" %>
+                        </div>
+                        <div>
+                            <%= radio_button_tag "price_range", "60_to_100", params[:price_range] == "60_to_100", id: "price_60_100" %>
+                            <%= label_tag "price_60_100", "$60 – $100" %>
+                        </div>
+                        <div>
+                            <%= radio_button_tag "price_range", "100_to_150", params[:price_range] == "100_to_150", id: "price_100_150" %>
+                            <%= label_tag "price_100_150", "$100 – $150" %>
+                        </div>
+                        <div>
+                            <%= radio_button_tag "price_range", "150_to_200", params[:price_range] == "150_to_200", id: "price_150_200" %>
+                            <%= label_tag "price_150_200", "$150 – $200" %>
+                        </div>
+                        <div>
+                            <%= radio_button_tag "price_range", "200_to_300", params[:price_range] == "200_to_300", id: "price_200_300" %>
+                            <%= label_tag "price_200_300", "$200 – $300" %>
+                        </div>
+                        <div>
+                            <%= radio_button_tag "price_range", "over_300", params[:price_range] == "over_300", id: "price_over300" %>
+                            <%= label_tag "price_over300", "Over $300" %>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-
-            <div>
-                <h3>Price</h3>
-                <div>
-                    <%= radio_button_tag "price_range", "under_30", params[:price_range] == "under_30", id: "price_under30" %>
-                    <%= label_tag "price_under30", "Under $30" %>
-                </div>
-                <div>
-                    <%= radio_button_tag "price_range", "30_to_60", params[:price_range] == "30_to_60", id: "price_30_60" %>
-                    <%= label_tag "price_30_60", "$30 – $60" %>
-                </div>
-                <div>
-                    <%= radio_button_tag "price_range", "60_to_100", params[:price_range] == "60_to_100", id: "price_60_100" %>
-                    <%= label_tag "price_60_100", "$60 – $100" %>
-                </div>
-                <div>
-                    <%= radio_button_tag "price_range", "100_to_150", params[:price_range] == "100_to_150", id: "price_100_150" %>
-                    <%= label_tag "price_100_150", "$100 – $150" %>
-                </div>
-                <div>
-                    <%= radio_button_tag "price_range", "150_to_200", params[:price_range] == "150_to_200", id: "price_150_200" %>
-                    <%= label_tag "price_150_200", "$150 – $200" %>
-                </div>
-                <div>
-                    <%= radio_button_tag "price_range", "200_to_300", params[:price_range] == "200_to_300", id: "price_200_300" %>
-                    <%= label_tag "price_200_300", "$200 – $300" %>
-                </div>
-                <div>
-                    <%= radio_button_tag "price_range", "over_300", params[:price_range] == "over_300", id: "price_over300" %>
-                    <%= label_tag "price_over300", "Over $300" %>
-                </div>
+            <div class="submit">
+                <%= form.button "Apply Filters", type: "submit", class: "logout-btn" %>
+                <%= link_to "Clear Filters", browse_path, class: "white-links" %>
             </div>
-
-
-
-            <%= form.submit "Apply Filters" %>
-            <%= link_to "Clear Filters", browse_path %>
-
 
 
         <% end %>
@@ -77,9 +83,9 @@
         <h2>Products</h2>
 
         <% if @products.any? %>
-            <div>
+            <div class="product-grid">
                 <% @products.each do |product| %>
-                <div>
+                <div class="product-card">
                     <%= link_to product_path(product) do %>
                     <% if product.image_url.present? %>
                         <%= image_tag product.image_url, alt: product.name %>
@@ -90,13 +96,16 @@
                     <p><%= number_to_currency(product.price) %></p>
                     <% end %>
                     <% if logged_in? %>
-                    <%= button_to "Add to Cart", add_to_cart_path(product), method: :post %>
+                    <%= button_to "Add to Cart", add_to_cart_path(product), method: :post, class: "logout-btn" %>
                     <% else %>
                     <p> please log in to add to cart. </p>
                     <% end %>
                 </div>
+
                 <% end %>
+                
             </div>
+            <%= paginate @products %> 
         <% else %>
             <p>No products found.</p>
         <% end %>

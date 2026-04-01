@@ -103,6 +103,7 @@ a.white-links, a.white-links h1{
 
 
 
+
 .logout-btn{
     appearance: none;
     border-radius: 0px;
@@ -203,3 +204,96 @@ div.welcome-grid{
 
 
 
+
+
+
+.browse-container{
+    padding-left: 3%;
+    padding-right: 3%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.browse-container aside{
+    background-color: black;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+
+    padding: 30px;
+    margin-top: 20px;
+    border-radius: 20px;
+}
+
+    .browse-container aside .filter-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 50px;
+
+        
+
+    }
+    .browse-container aside .filter-container .filters{
+        flex-grow: 1;
+    background-color: white;
+    height: 150px;
+
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 15px;
+        
+    }
+
+    .browse-container aside .filter-container .filters .filter-scroll{
+        overflow-y: scroll;
+        display: block;
+        height: 100%;
+    overflow-y: auto;
+    }
+
+    .browse-container aside .submit{
+        flex-grow: 1;
+        margin-top: 30px;
+    }
+
+
+
+
+
+.pagination a{
+    color: white;
+    background:  rgb(0, 0, 0);
+    padding: 6px 10px;
+    border-radius: 0px;
+    text-decoration: none;
+    transition: 0.2s;
+    box-shadow: none !important;
+    border: none;
+    outline: none;
+}
+
+
+.pagination a:hover{
+
+    color: rgb(151, 161, 161) !important;
+    background: white !important;
+    border-radius: 20px;
+}
+
+
+.pagination .current {
+    color: rgb(151, 161, 161) !important;
+    background: white !important;
+    text-shadow: none !important;
+    border-radius: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    border: none !important;
+}
