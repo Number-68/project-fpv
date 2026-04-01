@@ -1,56 +1,74 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
-<h1>Checkout</h1>
+<main class="cart-main">
 
-<h2>Order Summary</h2>
-<table border="1" cellpadding="5" cellspacing="0">
-  <thead>
-     <tr>
-       <th>Product</th>
-       <th>Quantity</th>
-       <th>Unit Price</th>
-       <th>Total</th>
-     </tr>
-  </thead>
-  <tbody>
-    <% @cart_items.each do |item| %>
+  <h1>Checkout</h1>
+
+  <h2>Order Summary</h2>
+  <table border="1" cellpadding="5" cellspacing="0">
+    <thead>
       <tr>
-        <td><%= item[:product].name %></td>
-        <td><%= item[:quantity] %></td>
-        <td><%= number_to_currency(item[:unit_price]) %></td>
-        <td><%= number_to_currency(item[:total]) %></td>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Unit Price</th>
+        <th>Total</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @cart_items.each do |item| %>
+        <tr>
+          <td><%= item[:product].name %></td>
+          <td><%= item[:quantity] %></td>
+          <td><%= number_to_currency(item[:unit_price]) %></td>
+          <td><%= number_to_currency(item[:total]) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<p><strong>Subtotal:</strong> <%= number_to_currency(@subtotal) %></p>
-<p><strong>Tax:</strong> <%= number_to_currency(@tax) %></p>
-<p><strong>Total:</strong> <%= number_to_currency(@total) %></p>
 
-<h2>Shipping Information</h2>
-<%= form_with model: @order, url: orders_path, method: :post, local: true, data: { turbo: false } do |f| %>  <div>
-    <%= f.label :shipping_address_line1, "Address Line 1" %>
-    <%= f.text_field :shipping_address_line1, required: true %>
-  </div>
-  <div>
-    <%= f.label :shipping_address_line2, "Address Line 2" %>
-    <%= f.text_field :shipping_address_line2 %>
-  </div>
-  <div>
-    <%= f.label :shipping_city, "City" %>
-    <%= f.text_field :shipping_city, required: true %>
-  </div>
-  <div>
-    <%= f.label :shipping_postal_code, "Postal Code" %>
-    <%= f.text_field :shipping_postal_code, required: true %>
-  </div>
-  <div>
-    <%= f.label :shipping_province, "Province" %>
-    <%= f.text_field :shipping_province, required: true %>
-  </div>
+  <p><strong>Subtotal:</strong> <%= number_to_currency(@subtotal) %></p>
+  <p><strong>Tax:</strong> <%= number_to_currency(@tax) %></p>
+  <p><strong>Total:</strong> <%= number_to_currency(@total) %></p>
+<div class="signup-box">
+  <h2>Shipping Information</h2>
 
-  <%= f.submit "Place Order" %>
-<% end %>
+  <%= form_with model: @order, 
+                url: orders_path, 
+                method: :post, 
+                local: true, 
+                data: { turbo: false } do |f| %>
 
-<%= link_to "Back to Cart", cart_path %>
+    <div>
+      <%= f.label :shipping_address_line1, "Address Line 1" %>
+      <%= f.text_field :shipping_address_line1, required: true, style: "width: 100%;" %>
+    </div>
+
+    <div>
+      <%= f.label :shipping_address_line2, "Address Line 2" %>
+      <%= f.text_field :shipping_address_line2, style: "width: 100%;" %>
+    </div>
+
+    <div>
+      <%= f.label :shipping_city, "City" %>
+      <%= f.text_field :shipping_city, required: true, style: "width: 100%;" %>
+    </div>
+
+    <div>
+      <%= f.label :shipping_postal_code, "Postal Code" %>
+      <%= f.text_field :shipping_postal_code, required: true, style: "width: 100%;" %>
+    </div>
+
+    <div>
+      <%= f.label :shipping_province, "Province" %>
+      <%= f.text_field :shipping_province, required: true, style: "width: 100%; margin-bottom: 50px;" %>
+    </div>
+
+    <button type="submit" class="logout-btn">
+      Place Order
+    </button>
+
+  <% end %>
+</div>
+
+
+  <%= link_to "Back to Cart", cart_path, class: "white-links bottom-top" %>
+</main>

@@ -1,64 +1,65 @@
-<h1>Your Cart</h1>
-
-<% if @cart.empty? %>
-    <p>Your cart is empty.</p>
-<% else %>
 
 
-    <table>
-
-        <thead>
-
-            <tr>
-            <th>Product</th>
-            <th>Quantity</th>
-            <th>Unit Price</th>
-            <th>Total</th>
-            <th></th>
-            </tr>
-
-        </thead>
+<main class="cart-main">
 
 
+    <h1>Your Cart</h1>
 
-        <tbody>
+    <% if @cart.empty? %>
+        <p>Your cart is empty.</p>
+    <% else %>
 
-
-            <% @cart.each do |product_id, quantity| %>
-            <% product = Product.find_by(id: product_id) %>
-            <% if product %>
+        <table>
+            <thead>
                 <tr>
-                <td><%= product.name %></td>
-                <td>
-
-                    <!-- Update form using direct URL (avoids helper name confusion) -->
-                    <%= form_with url: "/cart/update/#{product_id}", method: :patch, local: true do |f| %>
-                    <%= f.number_field :quantity, value: quantity, min: 0, style: "width: 60px;" %>
-                    <%= f.submit "Update" %>
-                    <% end %>
-                </td>
-
-                <td><%= number_to_currency(product.price) %></td>
-
-                <td><%= number_to_currency(product.price * quantity) %></td>
-                
-                <td>
-                    <!-- Remove link: uses helper that should exist -->
-                    <%= button_to "Remove", remove_from_cart_path(product_id), method: :delete, data: { confirm: "Remove this item?" }, form: { style: 'display: inline;' } %>            </td>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Total</th>
+                    <th></th>
                 </tr>
-            <% end %>
+            </thead>
 
-            <% end %>
-        </tbody>
-    </table>
+            <tbody>
 
 
+                <% @cart.each do |product_id, quantity| %>
+                <% product = Product.find_by(id: product_id) %>
+                <% if product %>
+                    <tr>
+                    <td><%= product.name %></td>
+                    <td>
 
-    <p><strong>Total: <%= number_to_currency(@cart.sum { |id, qty| Product.find_by(id: id)&.price.to_f * qty }) %></strong></p>
+                        <!-- Update form using direct URL (avoids helper name confusion) -->
+                        <%= form_with url: "/cart/update/#{product_id}", method: :patch, local: true do |f| %>
+                        <%= f.number_field :quantity, value: quantity, min: 0, style: "width: 60px;" %>
+                        <%= f.button "Update", type: "submit", class: "logout-btn" %>
+                        <% end %>
+                    </td>
 
-    <%= link_to "Proceed to Checkout", order_fill_path %>
+                    <td><%= number_to_currency(product.price) %></td>
 
-<% end %>
+                    <td><%= number_to_currency(product.price * quantity) %></td>
+                    
+                    <td>
+                        <!-- Remove link: uses helper that should exist -->
+                        <%= button_to "Remove", remove_from_cart_path(product_id), method: :delete, data: { confirm: "Remove this item?" }, class: "logout-btn" %>            </td>
+                    </tr>
+                <% end %>
+
+                <% end %>
+            </tbody>
+        </table>
 
 
-<%= link_to "Continue Shopping", browse_path %>
+
+        <p><strong>Total: <%= number_to_currency(@cart.sum { |id, qty| Product.find_by(id: id)&.price.to_f * qty }) %></strong></p>
+
+        <%= link_to "Proceed to Checkout", order_fill_path, class:"white-links" %>
+
+    <% end %>
+
+
+    <%= link_to "Continue Shopping", browse_path, class: "white-links" %>
+
+</main>

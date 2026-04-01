@@ -297,3 +297,79 @@ div.welcome-grid{
     outline: none !important;
     border: none !important;
 }
+
+
+
+
+
+.login-container{
+    display: flex; 
+    gap: 2rem; 
+    max-width: 1000px; 
+    margin: 0 auto;
+    padding-top: 25px;
+}
+
+    .login-container h2, .login-container label{ 
+        color: white;
+    }
+
+.login-box{
+    flex: 1; 
+     
+    padding: 1rem; 
+    border-radius: 8px;
+
+    background: black;
+}
+
+
+
+.signup-box{
+    flex: 1; 
+    padding: 1rem; 
+    border-radius: 8px;
+    background: black;
+}
+    .signup-box h2, .signup-box label{ 
+            color: white;
+        }
+
+
+
+
+
+
+
+.cart-main{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+
+main table{
+    background: black;
+    border-radius: 20px;
+    padding: 15px;
+}
+    main table thead tr th{
+        color: black;
+        background: white;
+    }
+
+    main table tbody tr td{
+        background: gray;
+        color: white;
+    }
+
+
+
+.bottom-top{
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.show-image{
+    max-width: 300px;
+    height: auto;
+}

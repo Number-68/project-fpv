@@ -1,41 +1,43 @@
-<h1>Order Confirmation</h1>
-<p>Thank you for your order!</p>
+<main class="cart-main bottom-top">
 
-<p><strong>Order ID:</strong> <%= @order.id %></p>
-<p><strong>Order Date:</strong> <%= @order.order_date || @order.created_at %></p>
-<p><strong>Status:</strong> <%= @order.status %></p>
 
-<h2>Order Items</h2>
-<table border="1" cellpadding="5" cellspacing="0">
-  <thead>
-     <tr>
-       <th>Product</th>
-       <th>Quantity</th>
-       <th>Unit Price</th>
-       <th>Total</th>
-     </tr>
-  </thead>
-  <tbody>
-    <% @order.order_items.each do |item| %>
+  <p><strong>Order ID:</strong> <%= @order.id %></p>
+  <p><strong>Order Date:</strong> <%= @order.order_date || @order.created_at %></p>
+  <p><strong>Status:</strong> <%= @order.status %></p>
+
+  <h2>Order Items</h2>
+  <table border="1" cellpadding="5" cellspacing="0">
+    <thead>
       <tr>
-        <td><%= item.product.name %></td>
-        <td><%= item.quantity %></td>
-        <td><%= number_to_currency(item.unit_price) %></td>
-        <td><%= number_to_currency(item.quantity * item.unit_price) %></td>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Unit Price</th>
+        <th>Total</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @order.order_items.each do |item| %>
+        <tr>
+          <td><%= item.product.name %></td>
+          <td><%= item.quantity %></td>
+          <td><%= number_to_currency(item.unit_price) %></td>
+          <td><%= number_to_currency(item.quantity * item.unit_price) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<p><strong>Subtotal:</strong> <%= number_to_currency(@order.subtotal) %></p>
-<p><strong>GST:</strong> <%= number_to_currency(@order.gst) %></p>
-<p><strong>PST:</strong> <%= number_to_currency(@order.pst) %></p>
-<p><strong>Total:</strong> <%= number_to_currency(@order.total_price) %></p>
+  <p><strong>Subtotal:</strong> <%= number_to_currency(@order.subtotal) %></p>
+  <p><strong>GST:</strong> <%= number_to_currency(@order.gst) %></p>
+  <p><strong>PST:</strong> <%= number_to_currency(@order.pst) %></p>
+  <p><strong>Total:</strong> <%= number_to_currency(@order.total_price) %></p>
 
-<p><strong>Shipping Address:</strong><br>
-<%= @order.shipping_address_line1 %><br>
-<%= @order.shipping_address_line2 if @order.shipping_address_line2.present? %><br>
-<%= @order.shipping_city %>, <%= @order.shipping_province %>  <%= @order.shipping_postal_code %>
-</p>
+  <p><strong>Shipping Address:</strong><br>
+  <%= @order.shipping_address_line1 %><br>
+  <%= @order.shipping_address_line2 if @order.shipping_address_line2.present? %><br>
+  <%= @order.shipping_city %>, <%= @order.shipping_province %>  <%= @order.shipping_postal_code %>
+  </p>
 
-<%= link_to "Continue Shopping", browse_path %>
+  <%= link_to "Continue Shopping", browse_path %>
+
+</main>
