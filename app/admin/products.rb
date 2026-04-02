@@ -15,4 +15,7 @@ ActiveAdmin.register Product do
   #   permitted
   # end
   
+  permit_params :category_id, :name, :brand, :description, :sku, :stock, :price, :image_url
+
+
 end

@@ -15,4 +15,11 @@ ActiveAdmin.register Order do
   #   permitted
   # end
   
+
+
+  config.filters = false
+
+
+  permit_params :customer_id, :order_date, :total_price, :status
+
 end
