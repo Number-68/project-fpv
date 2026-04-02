@@ -6,8 +6,21 @@
         <h2>Filters</h2>
         <%= form_with url: browse_path, method: :get, local: true do |form| %>
 
+            <div class="filters bottom-top">
+                <h3>Search</h3>
+                <%= form.text_field :query,
+                    value: params[:query],
+                    placeholder: "Search products..."%>
+            </div>
+
 
             <div class="filter-container">
+
+
+                
+
+
+
                 <div class="filters">
                     <h3>Category</h3>
                     <div class="filter-scroll">
@@ -78,6 +91,9 @@
 
         <% end %>
     </aside>
+
+    
+
 
     <main>
         <h2>Products</h2>

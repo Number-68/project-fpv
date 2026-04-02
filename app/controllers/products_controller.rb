@@ -6,6 +6,16 @@ class ProductsController < ApplicationController
     @brands = Product.distinct.pluck(:brand).compact
 
 
+
+    if params[:query].present?
+      q = "%#{params[:query].downcase}%"
+      @products = @products.where(
+        "LOWER(name) LIKE ? OR LOWER(description) LIKE ?",
+        q, q
+      )
+    end
+
+
     if params[:category_ids].present?
       @products = @products.where(category_id: params[:category_ids])
     end
