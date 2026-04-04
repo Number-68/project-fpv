@@ -1,5 +1,4 @@
 ActiveAdmin.register Order do
-
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -14,12 +13,11 @@ ActiveAdmin.register Order do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+
 
 
   config.filters = false
 
 
   permit_params :customer_id, :order_date, :total_price, :status
-
 end

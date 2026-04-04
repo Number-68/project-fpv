@@ -45,7 +45,6 @@ class ProductsController < ApplicationController
 
 
     @products = @products.page(params[:page]).per(12)
-
   end
 
   def show

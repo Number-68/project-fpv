@@ -17,12 +17,12 @@ Rails.application.routes.draw do
 
 
   # home root
-  root "pages#home"  
+  root "pages#home"
 
   # products
   get "browse", to: "products#index"
 
-  resources :products, only: [:index, :show]
+  resources :products, only: [ :index, :show ]
 
   # login and signup page
   get "login_signup", to: "pages#login_signup"
@@ -31,30 +31,29 @@ Rails.application.routes.draw do
   # cart
   get "cart", to: "carts#show"
 
-  resource :cart, only: [:show] do
-    post 'add/:product_id', to: 'carts#add', as: 'add_to'
-    delete 'remove/:product_id', to: 'carts#remove', as: 'remove_from'
-    patch 'update/:product_id', to: 'carts#update', as: 'update_cart'
+  resource :cart, only: [ :show ] do
+    post "add/:product_id", to: "carts#add", as: "add_to"
+    delete "remove/:product_id", to: "carts#remove", as: "remove_from"
+    patch "update/:product_id", to: "carts#update", as: "update_cart"
 
-    get 'success', on: :collection
-    get 'cancel', on: :collection
+    get "success", on: :collection
+    get "cancel", on: :collection
   end
 
 
-  get 'orders/success', to: 'orders#success', as: 'order_success'
-  get 'orders/cancel', to: 'orders#cancel', as: 'order_cancel'
+  get "orders/success", to: "orders#success", as: "order_success"
+  get "orders/cancel", to: "orders#cancel", as: "order_cancel"
 
 
-  #checkout
+  # checkout
   get "order_fill", to: "orders#new"
-  resources :orders, only: [:new, :create, :show]
-  
+  resources :orders, only: [ :new, :create, :show ]
+
 
 
   # session
-  post 'login', to: 'sessions#create', as: :login
-  delete 'logout', to: 'sessions#destroy', as: :logout
+  post "login", to: "sessions#create", as: :login
+  delete "logout", to: "sessions#destroy", as: :logout
   # registration
-  post 'signup', to: 'registrations#create', as: :signup
-
+  post "signup", to: "registrations#create", as: :signup
 end

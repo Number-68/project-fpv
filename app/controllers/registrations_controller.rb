@@ -17,6 +17,4 @@ class RegistrationsController < ApplicationController
   def customer_params
     params.require(:customer).permit(:first_name, :last_name, :email, :password, :password_confirmation, :phone_number, :address)
   end
-
-
 end

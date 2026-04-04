@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :require_login, only: [:new, :create, :show]
+  before_action :require_login, only: [ :new, :create, :show ]
 
 
 
@@ -8,26 +8,26 @@ class OrdersController < ApplicationController
     # get chckout data from stripe
     checkout_session = Stripe::Checkout::Session.retrieve(session_id)
 
-    if checkout_session.payment_status == 'paid'
+    if checkout_session.payment_status == "paid"
       # meta data
       metadata = checkout_session.metadata
-      cart_data = JSON.parse(metadata['cart_data'])
-      customer_id = metadata['customer_id']
+      cart_data = JSON.parse(metadata["cart_data"])
+      customer_id = metadata["customer_id"]
 
       # order attributes
       order = Order.new(
         customer_id: customer_id,
-        status: 'paid',
+        status: "paid",
         order_date: Time.current,
-        shipping_address_line1: metadata['shipping_address_line1'],
-        shipping_address_line2: metadata['shipping_address_line2'],
-        shipping_city: metadata['shipping_city'],
-        shipping_postal_code: metadata['shipping_postal_code'],
-        shipping_province: metadata['shipping_province'],
-        subtotal: metadata['subtotal'].to_d,
-        gst: metadata['tax'].to_d * 0.5,
-        pst: metadata['tax'].to_d * 0.5,
-        total_price: metadata['total'].to_d
+        shipping_address_line1: metadata["shipping_address_line1"],
+        shipping_address_line2: metadata["shipping_address_line2"],
+        shipping_city: metadata["shipping_city"],
+        shipping_postal_code: metadata["shipping_postal_code"],
+        shipping_province: metadata["shipping_province"],
+        subtotal: metadata["subtotal"].to_d,
+        gst: metadata["tax"].to_d * 0.5,
+        pst: metadata["tax"].to_d * 0.5,
+        total_price: metadata["total"].to_d
       )
 
       if order.save
@@ -121,17 +121,17 @@ class OrdersController < ApplicationController
     total = subtotal + tax
     total_cents = (total * 100).to_i
 
-    line_items = [{
+    line_items = [ {
       price_data: {
-        currency: 'usd',
+        currency: "usd",
         product_data: {
-          name: 'FPV Order',
-          description: "Order from #{current_customer.email}",
+          name: "FPV Order",
+          description: "Order from #{current_customer.email}"
         },
-        unit_amount: total_cents,
+        unit_amount: total_cents
       },
-      quantity: 1,
-    }]
+      quantity: 1
+    } ]
 
     metadata = {
       cart_data: cart.to_json,
@@ -148,9 +148,9 @@ class OrdersController < ApplicationController
 
     begin
       stripe_session = Stripe::Checkout::Session.create(
-        payment_method_types: ['card'],
+        payment_method_types: [ "card" ],
         line_items: line_items,
-        mode: 'payment',
+        mode: "payment",
         success_url: "#{request.base_url}/orders/success?session_id={CHECKOUT_SESSION_ID}",
         cancel_url: order_cancel_url,
         metadata: metadata,

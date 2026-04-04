@@ -26,7 +26,7 @@ gem "jbuilder"
 gem "bcrypt", "~> 3.1.7"
 
 
-# faker 
+# faker
 gem "faker"
 
 
@@ -87,5 +87,3 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
-
-

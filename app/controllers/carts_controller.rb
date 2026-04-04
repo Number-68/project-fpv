@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  before_action :require_login, only: [:show, :add, :remove, :update]
+  before_action :require_login, only: [ :show, :add, :remove, :update ]
 
 
   def show

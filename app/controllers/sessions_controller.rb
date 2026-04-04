@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
       redirect_to root_path, notice: "Logged in successfully."
     else
       flash.now[:alert] = "Invalid email or password"
-      render "pages/login_signup"  
+      render "pages/login_signup"
     end
   end
 

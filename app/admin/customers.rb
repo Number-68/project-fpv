@@ -1,5 +1,4 @@
 ActiveAdmin.register Customer do
-
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -25,5 +24,4 @@ ActiveAdmin.register Customer do
   filter :address
   filter :created_at
   filter :updated_at
-  
 end

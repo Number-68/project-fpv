@@ -10,7 +10,7 @@ AdminUser.create!(email: 'admin@fpvshop.com', password: 'fpvworldrules!', passwo
 
 # 5.times do
 #   Category.create!(
-#     name: Faker::Commerce.unique.department(max: 1) 
+#     name: Faker::Commerce.unique.department(max: 1)
 #   )
 # end
 
@@ -77,7 +77,7 @@ def fetch_category_urls
   response = HTTParty.get(BASE_URL)
   doc = Nokogiri::HTML(response.body)
 
-  
+
   category_links = doc.css('.main-nav__item.child-nav__item').map do |a|
     href = a['href']
     next unless href && href.start_with?('/collections/')
@@ -93,7 +93,7 @@ def fetch_product_links_from_category(category_url)
   response = HTTParty.get(category_url)
   doc = Nokogiri::HTML(response.body)
 
-  
+
   product_links = doc.css('a.card-link.js-prod-link').map do |a|
     href = a['href']
     next unless href
@@ -118,19 +118,19 @@ def scrape_product(product_url)
 
   brand = doc.at_css('.product-vendor a')&.text&.strip
 
-  
+
   sku = doc.at_css('.product-sku__value')&.text&.strip
 
 
   id_text = doc.at_css('.product-location-id')&.text
   custom_id = id_text&.gsub(/ID:/, '')&.strip if id_text
 
- #
+  #
   img = doc.at_css('.media-viewer__item img')
   image_url = nil
   if img
     image_url = img['data-src'] || img['src']
-  
+
     if image_url && image_url.start_with?('//')
       image_url = "https:#{image_url}"
     end
@@ -152,7 +152,7 @@ def scrape_product(product_url)
     brand: brand,
     sku: sku,
     custom_id: custom_id,
-    image_url: local_image_path,   
+    image_url: local_image_path,
     description: description,
     url: product_url
   }
@@ -169,7 +169,7 @@ end
 
 
 
-# seeding 
+# seeding
 
 puts "Starting seeding from epicfpv.ca..."
 
@@ -193,9 +193,9 @@ categories.each do |cat_url|
     # SKu identifier
     product = if product_data[:sku].present?
                 Product.find_or_initialize_by(sku: product_data[:sku])
-              else
+    else
                 Product.find_or_initialize_by(name: product_data[:name])
-              end
+    end
 
     product.assign_attributes(
       name: product_data[:name],
@@ -203,9 +203,9 @@ categories.each do |cat_url|
       description: product_data[:description],
       price: product_data[:price],
       sku: product_data[:sku],
-      stock: rand(5..150),                 
+      stock: rand(5..150),
       category: category,
-      image_url: product_data[:image_url]  
+      image_url: product_data[:image_url]
     )
 
     if product.save
